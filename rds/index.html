@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Manager – AWS RDS</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Employee Manager</h1>
+    <span id="dbStatus" class="badge">Checking DB…</span>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2 id="formTitle">Add Employee</h2>
+      <form id="empForm">
+        <input type="hidden" id="empId" />
+        <div class="grid">
+          <label>Name <input id="name" required maxlength="100" /></label>
+          <label>Email <input id="email" type="email" required maxlength="150" /></label>
+          <label>Department <input id="department" required maxlength="100" /></label>
+          <label>Salary <input id="salary" type="number" min="0" step="0.01" required /></label>
+        </div>
+        <div class="actions">
+          <button type="submit" id="saveBtn" class="btn primary">Add</button>
+          <button type="button" id="cancelBtn" class="btn" hidden>Cancel</button>
+        </div>
+      </form>
+      <p id="message" class="message"></p>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <h2>Employees <span id="count" class="muted"></span></h2>
+        <input id="search" type="search" placeholder="Search name, email, department…" />
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Email</th><th>Department</th><th>Salary</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
